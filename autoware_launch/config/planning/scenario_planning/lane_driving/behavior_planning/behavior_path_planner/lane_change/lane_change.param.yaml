@@ -24,17 +24,17 @@
 
       # target object
       target_object:
-        car: true
-        truck: true
-        bus: true
-        trailer: true
-        unknown: true
-        bicycle: true
-        motorcycle: true
-        pedestrian: true
+        car: false
+        truck: false
+        bus: false
+        trailer: false
+        unknown: false
+        bicycle: false
+        motorcycle: false
+        pedestrian: false
 
       # abort
-      enable_cancel_lane_change: true
+      enable_cancel_lane_change: false
       enable_abort_lane_change: false
 
       abort_delta_time: 1.0                     # [s]

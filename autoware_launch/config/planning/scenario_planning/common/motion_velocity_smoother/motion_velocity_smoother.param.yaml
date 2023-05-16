@@ -1,7 +1,7 @@
 /**:
   ros__parameters:
     # motion state constraints
-    max_velocity: 20.0      # max velocity limit [m/s]
+    max_velocity: 20.0    #  # max velocity limit [m/s]
     stop_decel: 0.0         # deceleration at a stop point[m/ss]
 
     # external velocity limit parameter
@@ -51,7 +51,7 @@
     # steering angle rate limit parameters
     max_steering_angle_rate: 40.0            # maximum steering angle rate [degree/s]
     resample_ds: 0.1                         # distance between trajectory points [m]
-    curvature_threshold: 0.02                # if curvature > curvature_threshold, steeringRateLimit is triggered [1/m]
+    curvature_threshold: 5.0                   # if curvature > curvature_threshold, steeringRateLimit is triggered [1/m] 0.02
     curvature_calculation_distance: 1.0      # distance of points while curvature is calculating [m]
 
     # system
