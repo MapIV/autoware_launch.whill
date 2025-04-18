@@ -1,0 +1,46 @@
+<launch>
+  <arg name="launch_socket_can_driver" default="true"/>
+
+  <arg name="use_fog" default="false"/>
+  <arg name="cov_x" default="0.0"/>
+  <arg name="cov_y" default="0.0"/>
+  <arg name="cov_z" default="0.0"/>
+  <arg name="use_ros_system" default="true"/>
+  <arg name="output_imu_topic" default="imu_raw" />
+  <arg name="interface" default="can0" />
+  <arg name="vehicle_id" default="default" />
+
+  <arg name="imu_raw_name" default="imu_raw"/>
+
+  <group>
+    <push-ros-namespace namespace="imu"/>
+   
+    <group>
+      <!--<push-ros-namespace namespace="tamagawa"/>-->
+      <include file="$(find-pkg-share tamagawa_imu_driver)/launch/can.launch">
+        <arg name="use_fog" value="$(var use_fog)"/>
+        <arg name="cov_x" value="$(var cov_x)"/>
+        <arg name="cov_y" value="$(var cov_y)"/>
+        <arg name="cov_z" value="$(var cov_z)"/>
+        <arg name="use_ros_system" value="$(var use_ros_system)"/>
+        <arg name="interface" value="$(var interface)"/>
+        <arg name="output_imu_topic" value="$(var output_imu_topic)"/>
+        <arg name="launch_driver" value="$(var launch_socket_can_driver)"/>
+      </include>
+    </group>
+
+    <arg name="imu_corrector_param_file" default="$(find-pkg-share individual_params)/config/$(var vehicle_id)/sample_sensor_kit/imu_corrector.param.yaml"/>
+    <include file="$(find-pkg-share autoware_imu_corrector)/launch/imu_corrector.launch.xml">
+      <arg name="input_topic" value="$(var imu_raw_name)"/>
+      <arg name="output_topic" value="imu_data"/>
+      <arg name="param_file" value="$(var imu_corrector_param_file)"/>
+    </include>
+
+    <include file="$(find-pkg-share autoware_imu_corrector)/launch/gyro_bias_estimator.launch.xml">
+      <arg name="input_imu_raw" value="$(var imu_raw_name)"/>
+      <arg name="input_odom" value="/localization/kinematic_state"/>
+      <arg name="imu_corrector_param_file" value="$(var imu_corrector_param_file)"/>
+    </include>
+
+  </group>
+</launch>
