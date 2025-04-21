@@ -114,10 +114,8 @@ def launch_setup(context, *args, **kwargs):
     nodes.append(
         ComposableNode(
             package="nebula_ros",
-#            plugin=sensor_make + "RosWrapper",
-            plugin="HesaiRosWrapper",
-#            name=sensor_make.lower() + "_ros_wrapper_node",
-            name="hesai_ros_wrapper_node",
+            plugin=sensor_make + "RosWrapper",
+            name=sensor_make.lower() + "_ros_wrapper_node",
             parameters=[
                 {
                     "calibration_file": sensor_calib_fp,
