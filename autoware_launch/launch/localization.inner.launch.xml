@@ -4,7 +4,7 @@
   <arg name="twist_source"/>
   <arg name="initial_pose"/>
   <arg name="system_run_mode"/>
-  <arg name="gnss_enabled" default="false"/>
+  <arg name="gnss_enabled"/>
 
   <!-- parameter paths for ndt -->
   <arg name="ndt_scan_matcher/pointcloud_preprocessor/crop_box_filter_measurement_range_param_path"/>
