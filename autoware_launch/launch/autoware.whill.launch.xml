@@ -18,11 +18,11 @@
   <arg name="launch_map" default="true" description="launch map"/>
   <arg name="launch_sensing" default="true" description="launch sensing"/>
   <arg name="launch_sensing_driver" default="true" description="launch sensing driver"/>
-  <arg name="launch_localization" default="false" description="launch localization"/>
-  <arg name="launch_perception" default="false" description="launch perception"/>
-  <arg name="launch_planning" default="false" description="launch planning"/>
-  <arg name="launch_control" default="false" description="launch control"/>
-  <arg name="launch_api" default="false" description="launch api"/>
+  <arg name="launch_localization" default="true" description="launch localization"/>
+  <arg name="launch_perception" default="true" description="launch perception"/>
+  <arg name="launch_planning" default="true" description="launch planning"/>
+  <arg name="launch_control" default="true" description="launch control"/>
+  <arg name="launch_api" default="true" description="launch api"/>
   <!-- Global parameters -->
   <arg name="use_sim_time" default="false" description="use_sim_time"/>
   <!-- Vehicle -->
@@ -95,7 +95,7 @@
 
   <!-- Localization -->
   <group if="$(var launch_localization)">
-    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_localization_component.launch.xml"/>
+    <include file="$(find-pkg-share autoware_launch)/launch/localization.launch.xml"/>
   </group>
 
   <!-- Perception -->

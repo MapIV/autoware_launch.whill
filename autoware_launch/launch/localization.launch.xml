@@ -6,7 +6,8 @@
   <arg name="input_pointcloud" default="/sensing/lidar/top/pointcloud_before_sync" description="The topic will be used in the localization util module"/>
   <arg name="localization_pointcloud_container_name" default="/pointcloud_container" description="The target container to which pointcloud preprocessing nodes in localization be attached"/>
   <arg name="initial_pose" default="[]" description="initial pose (x, y, z, quat_x, quat_y, quat_z, quat_w)"/>
-  <arg name="gnss_enabled" default="true"/>
+  <arg name="gnss_enabled" default="false"/>
+
   <group>
     <include file="$(find-pkg-share autoware_launch)/launch/localization.inner.launch.xml">
       <arg name="pose_source" value="$(var pose_source)"/>
