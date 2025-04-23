@@ -30,8 +30,8 @@
         <arg name="launch_driver" value="$(var launch_socket_can_driver)"/>
       </include>
     </group>
-
-    <arg name="imu_corrector_param_file" default="$(find-pkg-share whill_sensor_kit_launch)/config/$(var vehicle_id)/sample_sensor_kit/imu_corrector.param.yaml"/>
+    
+    <arg name="imu_corrector_param_file" default="$(find-pkg-share whill_sensor_kit_launch)/config/imu_corrector.param.yaml"/>
     <include file="$(find-pkg-share autoware_imu_corrector)/launch/imu_corrector.launch.xml">
       <arg name="input_topic" value="tamagawa/imu_raw"/>
       <arg name="output_topic" value="imu_data"/>
