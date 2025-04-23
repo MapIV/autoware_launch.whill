@@ -1,8 +1,8 @@
 /**:
   ros__parameters:
-    angular_velocity_stddev_xx: 0.0
-    angular_velocity_stddev_yy: 0.0
-    angular_velocity_stddev_zz: 0.0
-    angular_velocity_offset_x: 0.0
-    angular_velocity_offset_y: 0.0
-    angular_velocity_offset_z: 0.0
+    angular_velocity_stddev_xx: 4.26e-6
+    angular_velocity_stddev_yy: 5.39e-6
+    angular_velocity_stddev_zz: 4.92e-5
+    angular_velocity_offset_x: 0.000467
+    angular_velocity_offset_y: 0.00464
+    angular_velocity_offset_z: -0.00932
