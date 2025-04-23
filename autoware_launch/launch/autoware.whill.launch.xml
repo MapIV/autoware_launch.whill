@@ -101,14 +101,14 @@
 
   <!-- Perception -->
   <group if="$(var launch_perception)">
-    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_perception_component.launch.xml">
+    <include file="$(find-pkg-share autoware_launch)/launch/perception.launch.xml">
       <arg name="data_path" value="$(var data_path)"/>
     </include>
   </group>
 
   <!-- Planning -->
   <group if="$(var launch_planning)">
-    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_planning_component.launch.xml">
+    <include file="$(find-pkg-share autoware_launch)/launch/planning.launch.xml">
       <arg name="module_preset" value="$(var planning_module_preset)"/>
       <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
       <arg name="is_simulation" value="$(var is_simulation)"/>
@@ -117,7 +117,7 @@
 
   <!-- Control -->
   <group if="$(var launch_control)">
-    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_control_component.launch.xml">
+    <include file="$(find-pkg-share autoware_launch)/launch/control.launch.xml">
       <arg name="module_preset" value="$(var control_module_preset)"/>
     </include>
   </group>
