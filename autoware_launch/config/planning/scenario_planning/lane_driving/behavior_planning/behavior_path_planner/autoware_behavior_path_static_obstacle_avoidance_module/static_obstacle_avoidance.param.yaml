@@ -10,7 +10,7 @@
       # "current_lane"           : use only current lane. this module doesn't use adjacent lane to avoid object.
       # "same_direction_lane"    : this module uses same direction lane to avoid object if need.
       # "opposite_direction_lane": this module uses both same direction and opposite direction lane.
-      use_lane_type: "opposite_direction_lane"
+      use_lane_type: "current_lane"
       # drivable area setting
       use_intersection_areas: true
       use_hatched_road_markings: true
@@ -98,13 +98,13 @@
         pedestrian:
           th_moving_speed: 0.28
           th_moving_time: 1.0
-          longitudinal_margin: 0.6
+          longitudinal_margin: 0.1
           lateral_margin:
-            soft_margin: 0.7
-            hard_margin: 0.5
-            hard_margin_for_parked_vehicle: 0.2
+            soft_margin: 0.5
+            hard_margin: 0.1
+            hard_margin_for_parked_vehicle: 0.5
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
+          envelope_buffer_margin: 0.1
           th_error_eclipse_long_radius : 0.6
         lower_distance_for_polygon_expansion: 30.0      # [m] FOR DEVELOPER
         upper_distance_for_polygon_expansion: 100.0     # [m] FOR DEVELOPER
@@ -122,21 +122,21 @@
           motorcycle: true                              # [-]
           pedestrian: true                              # [-]
         # detection range
-        object_check_goal_distance: 20.0                # [m]
-        object_check_return_pose_distance: 20.0         # [m]
+        object_check_goal_distance: 1.0                # [m]
+        object_check_return_pose_distance: 1.0         # [m]
         # lost object compensation
         max_compensation_time: 2.0
 
         # detection area generation parameters
         detection_area:
-          static: false                                 # [-]
-          min_forward_distance: 50.0                    # [m]
-          max_forward_distance: 150.0                   # [m]
-          backward_distance: 10.0                       # [m]
+          static: true                                 # [-]
+          min_forward_distance: 10.0                    # [m]
+          max_forward_distance: 20.0                   # [m]
+          backward_distance: 1.0                       # [m]
 
         # filtering parking objects
         parked_vehicle:
-          th_offset_from_centerline: 1.0                # [m]
+          th_offset_from_centerline: 0.1                # [m]
           th_shiftable_ratio: 0.8                       # [-]
           min_road_shoulder_width: 0.5                  # [m] FOR DEVELOPER
 
@@ -183,7 +183,7 @@
           unknown: false                                # [-]
           bicycle: true                                 # [-]
           motorcycle: true                              # [-]
-          pedestrian: true                              # [-]
+          pedestrian: false                         # [-]
         # safety check configuration
         enable: true                                    # [-]
         check_current_lane: false                       # [-]
@@ -193,7 +193,7 @@
         check_other_object: true                        # [-]
         # collision check parameters
         check_all_predicted_path: false                 # [-]
-        safety_check_backward_distance: 100.0           # [m]
+        safety_check_backward_distance: 1.0           # [m]
         hysteresis_factor_expand_rate: 1.5              # [-]
         hysteresis_factor_safe_count: 3                 # [-]
         collision_check_yaw_diff_threshold: 3.1416      # [rad]
@@ -218,34 +218,34 @@
       avoidance:
         # avoidance lateral parameters
         lateral:
-          th_avoid_execution: 0.09                      # [m] FOR DEVELOPER
+          th_avoid_execution: 0.01                      # [m] FOR DEVELOPER
           th_small_shift_length: 0.101                  # [m] FOR DEVELOPER
-          soft_drivable_bound_margin: 0.3               # [m]
-          hard_drivable_bound_margin: 0.3               # [m]
+          soft_drivable_bound_margin: 0.5               # [m]
+          hard_drivable_bound_margin: 0.5               # [m]
           max_right_shift_length: 5.0                   # [m] FOR DEVELOPER
           max_left_shift_length: 5.0                    # [m] FOR DEVELOPER
-          max_deviation_from_lane: 0.2                  # [m]
+          max_deviation_from_lane: 0.05                  # [m]
           # approve the next shift line after reaching this percentage of the current shift line length.
           # this parameter is added to allow waiting for the return of shift approval until the occlusion behind the avoid target is clear.
           # this feature can be disabled by setting this parameter to 0.0.
           ratio_for_return_shift_approval: 0.5          # [-]
         # avoidance distance parameters
         longitudinal:
-          min_prepare_time: 1.0                         # [s]
-          max_prepare_time: 2.0                         # [s]
-          min_prepare_distance: 1.0                     # [m]
-          min_slow_down_speed: 1.38                     # [m/s]
-          buf_slow_down_speed: 0.56                     # [m/s] FOR DEVELOPER
-          nominal_avoidance_speed: 8.33                 # [m/s] FOR DEVELOPER
+          min_prepare_time: 0.1                         # [s]
+          max_prepare_time: 1.0                         # [s]
+          min_prepare_distance: 0.1                     # [m]
+          min_slow_down_speed: 1.0                     # [m/s]
+          buf_slow_down_speed: 0.2                     # [m/s] FOR DEVELOPER
+          nominal_avoidance_speed: 0.1              # [m/s] FOR DEVELOPER
           consider_front_overhang: true                 # [-]
           consider_rear_overhang: true                  # [-]
         # return dead line
         return_dead_line:
           goal:
-            enable: true                                # [-]
+            enable: false                                # [-]
             buffer: 3.0                                 # [m]
           traffic_light:
-            enable: true                                # [-]
+            enable: false                          # [-]
             buffer: 3.0                                 # [m]
 
       # For cancel maneuver
@@ -261,8 +261,8 @@
 
       # For stop maneuver
       stop:
-        max_distance: 20.0                              # [m]
-        stop_buffer: 1.0                                # [m] FOR DEVELOPER
+        max_distance: 0.1                              # [m]
+        stop_buffer: 0.1                              # [m] FOR DEVELOPER
 
       policy:
         # policy for rtc request. select "per_shift_line" or "per_avoidance_maneuver".
@@ -292,9 +292,9 @@
         # lateral constraints
         lateral:
           velocity: [1.39, 4.17, 11.1]                  # [m/s]
-          max_accel_values: [0.5, 0.5, 0.5]             # [m/ss]
-          min_jerk_values: [0.2, 0.2, 0.2]              # [m/sss]
-          max_jerk_values: [3.0, 3.0, 3.0]              # [m/sss]
+          max_accel_values: [10.0, 20.0, 30.0]             # [m/ss]
+          min_jerk_values: [0.0, 0.0, 0.0]              # [m/sss]
+          max_jerk_values: [20.0, 20.0, 20.0]              # [m/sss]
 
         # longitudinal constraints
         longitudinal:
@@ -329,7 +329,7 @@
       debug:
         enable_other_objects_marker: true
         enable_other_objects_info: true
-        enable_detection_area_marker: false
+        enable_detection_area_marker: true
         enable_drivable_bound_marker: false
         enable_safety_check_marker: false
         enable_shift_line_marker: false
