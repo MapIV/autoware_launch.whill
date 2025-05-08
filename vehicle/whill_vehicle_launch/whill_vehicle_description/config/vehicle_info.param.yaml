@@ -9,4 +9,4 @@
     left_overhang: 0.09 # between left wheel center and vehicle left
     right_overhang: 0.09 # between right wheel center and vehicle right
     vehicle_height: 1.6
-    max_steer_angle: 0.70 # [rad]
+    max_steer_angle: 0.785398 # [rad]
