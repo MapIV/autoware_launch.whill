@@ -250,13 +250,13 @@
 
       # For cancel maneuver
       cancel:
-        enable: true                                    # [-]
+        enable: false                                    # [-]
         force:
           duration_time: 2.0                            # [s]
 
       # For yield maneuver
       yield:
-        enable: true                                    # [-]
+        enable: false                                    # [-]
         enable_during_shifting: false                   # [-]
 
       # For stop maneuver
