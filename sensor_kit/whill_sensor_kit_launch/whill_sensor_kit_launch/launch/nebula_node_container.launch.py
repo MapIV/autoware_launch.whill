@@ -140,10 +140,12 @@ def launch_setup(context, *args, **kwargs):
                         "rotation_speed",
                         "packet_mtu_size",
                         "setup_sensor",
+                        "udp_only",
                         "ptp_profile",
                         "ptp_domain",
                         "ptp_transport_type",
                         "ptp_switch_type",
+                        "ptp_lock_threshold",
                         "retry_hw",
                         "diag_span",
                     ),
@@ -292,7 +294,9 @@ def generate_launch_description():
     add_launch_arg("ptp_profile", "1588v2", "xxxxx")
     add_launch_arg("ptp_domain", "0", "xxxxx")
     add_launch_arg("ptp_transport_type", "UDP", "xxxxx")
+    add_launch_arg("udp_only", "false", "xxxxx")
     add_launch_arg("ptp_switch_type", "TSN", "xxxxx")
+    add_launch_arg("ptp_lock_threshold", "100", "xxxxx")
     add_launch_arg("use_multithread", "False", "use multithread")
     add_launch_arg("use_intra_process", "False", "use ROS 2 component container communication")
     add_launch_arg("lidar_container_name", "nebula_node_container")

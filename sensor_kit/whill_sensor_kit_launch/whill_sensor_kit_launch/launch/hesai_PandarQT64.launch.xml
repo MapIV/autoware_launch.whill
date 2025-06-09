@@ -8,7 +8,7 @@
   <arg name="return_mode" default="Dual"/>
   <arg name="sensor_ip" default="192.168.1.202"/>
   <arg name="host_ip" default="192.168.1.100"/>
-  <arg name="data_port" default="2369"/>
+  <arg name="data_port" default="2368"/>
   <arg name="scan_phase" default="0.0"/>
   <arg name="cloud_min_angle" default="0"/>
   <arg name="cloud_max_angle" default="360"/>
