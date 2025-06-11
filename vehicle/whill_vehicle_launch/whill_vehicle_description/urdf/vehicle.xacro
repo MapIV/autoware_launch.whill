@@ -8,6 +8,6 @@
   <xacro:include filename="$(find whill_vehicle_description)/urdf/whill.xacro"/>
 
   <!-- sensors -->
-  <xacro:property name="sensor_model_property" value="$(arg sensor_model)"/>
-  <xacro:include filename="$(find whill_sensor_kit_description)/urdf/sensors.xacro"/>
+  <!-- <xacro:property name="sensor_model_property" value="$(arg sensor_model)"/>
+  <xacro:include filename="$(find whill_sensor_kit_description)/urdf/sensors.xacro"/> -->
 </robot>
