@@ -6,7 +6,7 @@
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
 
   <group>
-    <push-ros-namespace namespace="sensing"/>
+    <!-- <push-ros-namespace namespace="sensing"/> -->
     <!-- LiDAR Driver -->
     <include file="$(find-pkg-share whill_sensor_kit_launch)/launch/lidar.launch.xml">
       <arg name="launch_driver" value="$(var launch_driver)"/>
