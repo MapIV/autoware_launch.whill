@@ -1,15 +1,15 @@
 sensor_kit_base_link:
   hesai_top:
-    x: -0.13
+    x: 0.0
     y: 0.0
-    z: 1.56
+    z: 0.08
     roll: 0.0
-    pitch: -0.104719755
+    pitch: 0.0
     yaw: 0.0
   tamagawa/imu_link:
-    x: -0.13
+    x: 0.0
     y: 0.0
-    z: 1.48
+    z: 0.0
     roll: 0.0
-    pitch: -0.104719755
+    pitch: 0.0
     yaw: 0.0
