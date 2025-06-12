@@ -3,6 +3,6 @@
     angular_velocity_stddev_xx: 0.00066
     angular_velocity_stddev_yy: 0.00097
     angular_velocity_stddev_zz: 0.00047
-    angular_velocity_offset_x: 0.0073
-    angular_velocity_offset_y: 0.0049
+    angular_velocity_offset_x: 0.0005
+    angular_velocity_offset_y: 0.0047
     angular_velocity_offset_z: -0.0095
