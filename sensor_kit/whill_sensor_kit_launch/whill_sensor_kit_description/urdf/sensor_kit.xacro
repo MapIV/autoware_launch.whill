@@ -3,6 +3,7 @@
   <xacro:macro name="sensor_kit_macro" params="parent x y z roll pitch yaw">
     <xacro:include filename="$(find whill_sensor_kit_description)/urdf/pandar_qt.xacro"/>
     <xacro:include filename="$(find whill_sensor_kit_description)/urdf/imu.xacro"/>
+    <xacro:include filename="$(find whill_sensor_kit_description)/urdf/camera0.xacro"/>
 
     <xacro:arg name="gpu" default="false"/>
     <xacro:arg name="config_dir" default="$(find whill_sensor_kit_description)/config"/>
@@ -45,6 +46,19 @@
       pitch="${calibration['sensor_kit_base_link']['tamagawa/imu_link']['pitch']}"
       yaw="${calibration['sensor_kit_base_link']['tamagawa/imu_link']['yaw']}"
       fps="100"
+    />
+
+    <!-- camera0 -->
+    <xacro:camera0_macro
+      name="camera0/camera"
+      parent="sensor_kit_base_link"
+      namespace=""
+      x="${calibration['sensor_kit_base_link']['camera0/camera']['x']}"
+      y="${calibration['sensor_kit_base_link']['camera0/camera']['y']}"
+      z="${calibration['sensor_kit_base_link']['camera0/camera']['z']}"
+      roll="${calibration['sensor_kit_base_link']['camera0/camera']['roll']}"
+      pitch="${calibration['sensor_kit_base_link']['camera0/camera']['pitch']}"
+      yaw="${calibration['sensor_kit_base_link']['camera0/camera']['yaw']}"
     />
   </xacro:macro>
 </robot>

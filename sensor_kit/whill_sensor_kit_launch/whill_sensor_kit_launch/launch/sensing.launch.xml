@@ -25,9 +25,9 @@
       <arg name="output_twist_with_covariance" value="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
     </include>
 
-    <include file="$(find-pkg-share whill_sensor_kit_launch)/launch/lidar_camera_tf_publisher.launch.py">
+    <!-- <include file="$(find-pkg-share whill_sensor_kit_launch)/launch/lidar_camera_tf_publisher.launch.py">
       <arg name="tf_file_path" value="$(var lidar_camera0_tf_file)"/>
-    </include>
+    </include> -->
 
   </group>
 </launch>
